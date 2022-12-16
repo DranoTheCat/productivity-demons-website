@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="DranoTheCat">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="/css/main.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body style="overflow: hidden;">
+    
+    <canvas width="100%" height="100%" id="fire" style="width : 100%; height : 100%; z-index: -99; position: absolute;"></canvas>
+    <div id="section">
+        <div class="box">
+            <img class="scale" src="images/productivitydemonstitle.png"/>
+        </div>
+        <div id="window">
+            <div class="box">
+                <div class="center">
+                    <img src="images/happy.gif"/>
+                </div>
+                <div class="center">
+                    <img src="images/doug.png" id="dougimg"/>
+                </div>
+            </div>
+            <div class="box">
+                <div>
+                    <p>This is your productivity demon. Your job is to keep him happy.</p>
+                </div>
+            </div>
+            <div class="box">
+                <div>
+                    <p>He will grow bored over time.  You can prevent this by playing with him!</p>
+                </div>
+                <div class="center">
+                    <img src="images/angry.gif"/>
+                </div>
+            </div>
+            <div class="box">
+                <div class="center">
+                    <img src="images/furious.gif"/>
+                </div>
+                <div>
+                    <p>Your productivity demon wants you to be productive.</p>
+                </div>
+            </div>
+            <div class="box">
+                <div>
+                    <p>You want to be lazy.</p>
+                </div>
+                <div class="center">
+                    <img src="images/meh.gif"/>
+                </div>
+            </div>
+            <div class="box">
+                <div class="center">
+                    <img src="images/slot.gif"/>
+                </div>
+                <div>
+                    <p>To appease your demon you must play his game.</p>
+                    <p>Press the button to spin the productivity wheel and decide your fate.</p>
+                </div>
+            </div>
+            <div class="box">
+                <div>
+                    <p>You might get lucky and get to relax.</p>
+                </div>
+                <div class="center">
+                    <img src="images/lazy.gif"/>
+                </div>
+            </div>
+            <div class="box">
+                <div class="center">
+                    <img src="images/stretching.gif"/>
+                </div>
+                <div>
+                    <p>Or need to stretch.</p>
+                </div>
+            </div>
+            <div class="box">
+                <div>
+                    <p>Or, <i>gasp</i>, worse case, need to do something productive.</p>    
+                </div>
+                <div class="center">
+                    <img src="images/productive.gif"/>
+                </div>
+            </div>
+            <div class="box">
+                <div class="center">
+                    <img src="images/happy.gif"/>
+                </div>
+                <div>
+                    <p>There is a silver lining to hitting the "productivity" outcome, though -- its worth more points!</p>
+                    <p>Your productivity demon wants you to hit your daily point goal.  You gain points by spinning the productivity wheel.</p>
+                    <p>You gain more points to stretch than to be relax, and the most points to be productive.</p>
+                </div>
+            </div>
+            <div class="box">
+                <div>
+                    <p>Your productivity demon will become blissfully satiated if you hit your point limit for the day.</p>
+                    <p>However, be warned that ignoring your productivity demon for too long may result in demonic consequences.</p>
+                </div>
+                <div class="center">
+                    <img src="images/serene.gif"/>
+                </div>
+            </div>
+            <div class="box">
+                <div>
+                    <p>Enjoy your demonic productivity!</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="center">
+                    <img src="images/hellpossessed.gif"/>
+                </div>
+            </div>
+        </div>
+    </div>     
+
+    <script type="text/javascript" charset="utf-8">
+        // start effect when dom is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            var canvas = document.getElementById('fire');
+            var ctx = canvas.getContext('2d');
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+            var intensity = null;
+            var fps = 30;
+            var threshold = 0.5;
+            var imageData = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
+            var data = imageData.data;
+            var numPixels = data.length / 4;
+            
+            var colors = [];
+            
+            for (var i = 0; i < 256; i++) {
+                var color = [];
+                color[0] = color[1] = color[2] = 0;
+                colors[i] = color;
+            }
+            
+            for (var i = 0; i < 32; ++i) {
+                colors[i][2] = i << 1;
+                colors[i + 32][0] = i << 3;
+                colors[i + 32][2] = 64 - (i << 1);
+                colors[i + 64][0] = 255;
+                colors[i + 64][1] = i << 3;
+                colors[i + 96][0] = 255;
+                colors[i + 96][1] = 255;
+                colors[i + 96][2] = i << 2;
+                colors[i + 128][0] = 255;
+                colors[i + 128][1] = 255;
+                colors[i + 128][2] = 64 + (i << 2);
+                colors[i + 160][0] = 255;
+                colors[i + 160][1] = 255;
+                colors[i + 160][2] = 128 + (i << 2);
+                colors[i + 192][0] = 255;
+                colors[i + 192][1] = 255;
+                colors[i + 192][2] = 192 + i;
+                colors[i + 224][0] = 255;
+                colors[i + 224][1] = 255;
+                colors[i + 224][2] = 224 + i;
+            }
+            
+            var fire = [];
+            // init fire array
+            for (var i = 0; i < canvasWidth * canvasHeight; i++) {
+                fire[i] = 0;
+            }
+            
+            var time = new Date().getTime();
+            
+            function randomizeThreshold() {
+                threshold += Math.random() * 0.2 - 0.1;
+                threshold = Math.min(Math.max(threshold, 0.5), 0.8);
+            }
+            
+            function burnBurnBurn() {
+                // request animation frame
+                window.requestAnimationFrame(burnBurnBurn);
+                var now = new Date().getTime();
+                dt = now - time;
+                
+                if (dt < (1000 / fps))
+                    return; // skip a frame
+                    
+                time = now;
+                
+                var bottomLine = canvasWidth * (canvasHeight - 1);
+                
+                // draw random pixels at the bottom line
+                for (var x = 0; x < canvasWidth; x++) {
+                    var value = 0;
+                    
+                    if (Math.random() > threshold)
+                        value = 200;
+                        
+                    fire[bottomLine + x] = value;
+                }
+                
+                // move flip upwards, start at bottom
+                var value = 0;
+                
+                for (var y = 0; y < canvasHeight; ++y) {
+                    for (var x = 0; x < canvasWidth; ++x) {
+                        if (x == 0) {
+                            value = fire[bottomLine];
+                            value += fire[bottomLine];
+                            value += fire[bottomLine - canvasWidth];
+                            value /= 3;
+                        } else if (x == canvasWidth -1) {
+                            value = fire[bottomLine + x];
+                            value += fire[bottomLine - canvasWidth + x];
+                            value += fire[bottomLine + x - 1];
+                            value /= 3;
+                        } else {
+                            value = fire[bottomLine + x];
+                            value += fire[bottomLine + x + 1];
+                            value += fire[bottomLine + x - 1];
+                            value += fire[bottomLine - canvasWidth + x];
+                            value /= 4;
+                        }
+                        
+                        if (value > 1)
+                            value -= 1;
+                        
+                        value = Math.floor(value);
+                        var index = bottomLine - canvasWidth + x;
+                        fire[index] = value;
+                    }
+                    
+                    bottomLine -= canvasWidth;
+                }
+                
+                var skipRows = 2; // skip the bottom 2 rows
+                
+                // render the flames using our color table
+                for (var y = skipRows; y < canvasHeight; ++y) {
+                    for (var x = 0; x < canvasWidth; ++x) {
+                        var index = y * canvasWidth * 4 + x * 4;
+                        var value = fire[(y - skipRows) * canvasWidth + x];
+                        
+                        data[index] = colors[value][0];
+                        data[++index] = colors[value][1];
+                        data[++index] = colors[value][2];
+                        if (colors[value][0] > 1) {
+                            data[++index] = colors[value][0];
+                        } else {
+                            data[++index] = 0;
+                        }
+                    }
+                }
+                
+                // sometimes change fire intensity
+                if (intensity == null) {
+                    if (Math.random() > 0.95) {
+                        randomizeThreshold();
+                    }
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+        };
+        
+        window.requestAnimationFrame(burnBurnBurn);
+        
+        });
+        
+        
+    </script>
+</body>

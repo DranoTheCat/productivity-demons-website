@@ -1,0 +1,87 @@
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  body {
+    font-family: 'VT323', sans-serif;
+    font-size: 2.5em;
+    background: rgb(0,0,0);
+    /*background: linear-gradient(90deg, rgb(153, 10, 5) 0%, rgba(0,0,0,1) 23%, rgba(0, 0, 0, 1) 77%, rgba(153, 10, 5, 1) 100%); */
+    color: #faeef8;
+  }
+
+  #section {
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+  }
+
+  .leftimg {
+    float: left;
+  }
+
+  #dougimg {
+    transform: rotate(7deg) translateY(-30px);
+  }
+
+  .rightimg {
+    float: right
+  }
+
+  #window {
+    background: rgba(0, 0, 0, 0.8);
+    width: 50%;
+    border-radius: 25px;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 50px;
+    box-shadow: 20px 20px 20px -20px #000,
+    -20px 20px 20px -20px #000;
+  }
+
+  #title {
+    font-size: 3em;
+  }
+
+  .scale {
+    width: 50%;
+    height: auto;
+    margin: auto;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 1400px) {
+    #window {
+        width: 75vw;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    .box {
+        display: block;
+        align-items: unset;
+        justify-content: unset;
+        margin: 3px;
+        padding: 3px;
+    }
+    #window {
+        width: 98vw;
+    }
+
+    #dougimg {
+        transform: rotate(97deg) translateY(-30px);
+        scale: 50%;
+      }
+}
