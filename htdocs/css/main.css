@@ -37,6 +37,10 @@
     float: right
   }
 
+  #titleimg {
+    min-width: 350px;
+  }
+
   #window {
     background: rgba(0, 0, 0, 0.8);
     width: 50%;
@@ -60,6 +64,8 @@
 
   .center {
     text-align: center;
+    justify-content: center;
+
   }
 
   @media only screen and (max-width: 1400px) {
