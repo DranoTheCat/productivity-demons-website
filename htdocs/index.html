@@ -84,12 +84,12 @@
                     <p>You might get lucky and get to relax.</p>
                 </div>
                 <div class="center">
-                    <img src="images/relax.png"/>
+                    <img src="images/relax.gif"/>
                 </div>
             </div>
             <div class="box">
                 <div class="center">
-                    <img src="images/stretching.gif"/>
+                    <img src="images/stretch.gif"/>
                 </div>
                 <div>
                     <p>Or need to stretch.</p>
@@ -115,7 +115,7 @@
             </div>
             <div class="box">
                 <div>
-                    <p>Your productivity demon will become blissfully satiated if you hit your point limit for the day.</p>
+                    <p>Your productivity demon will become blissfully satiated if you hit your point goal for the day.</p>
                 </div>
                 <div class="center">
                     <img src="images/blissful.gif"/>
@@ -150,8 +150,8 @@
             var canvasWidth = canvas.width;
             var canvasHeight = canvas.height;
             var intensity = null;
-            var fps = 16;
-            var threshold = 0.3;
+            var fps = 13;
+            var threshold = 0.5;
             var imageData = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
             var data = imageData.data;
             var numPixels = data.length / 4;
@@ -187,11 +187,11 @@
                 colors[i + 224][2] = 224 + i;
             }
             
-            for (let i = 0; i < 32; i++) {
-                for (let j = 0; j < 8; j++) {
-                    colors[i*8 + j][0] = colors[i*8][0];
-                    colors[i*8 + j][1] = colors[i*8][1];
-                    colors[i*8 + j][2] = colors[i*8][2];
+            for (let i = 0; i < 24; i++) {
+                for (let j = 0; j < 10; j++) {
+                    colors[i*10 + j][0] = colors[i*10][0];
+                    colors[i*10 + j][1] = colors[i*10][1];
+                    colors[i*10 + j][2] = colors[i*10][2];
                 }
             }
 
@@ -224,20 +224,16 @@
                 var bottomLine = canvasWidth * (canvasHeight - 1);
                 
                 // draw random pixels at the bottom line
-                for (var x = 0; x < canvasWidth; x+=8) {
+                for (var x = 0; x < canvasWidth; x+=16) {
                     var value = 0;
                     
                     if (Math.random() > threshold)
                         value = 200;
                         
-                    fire[bottomLine + x] = value;
-                    fire[bottomLine + x + 1] = value;
-                    fire[bottomLine + x + 2] = value;
-                    fire[bottomLine + x + 3] = value;
-                    fire[bottomLine + x + 4] = value;
-                    fire[bottomLine + x + 5] = value;
-                    fire[bottomLine + x + 6] = value;
-                    fire[bottomLine + x + 7] = value;
+                    for (let j = 0; j < 16; j++) {
+                        fire[bottomLine + x + j] = value;
+                    }
+                    
                 }
 
                 
