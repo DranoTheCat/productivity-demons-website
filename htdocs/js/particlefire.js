@@ -1,22 +1,27 @@
 document.addEventListener("DOMContentLoaded", function() {
     window.onresize = function(){ location.reload(); }
 
+    var fps = 60; // Strangely, doesn't look as good at 24fps despite matching the animations
+
     var canvas = document.getElementById('fire');
     var ctx = canvas.getContext('2d');
+    
     var pixelSize = 4;
     tw = window.innerWidth;
-    if (tw > 1900) { // 4k?
+    if (tw > 1900) { // Probably have a 4k display
         pixelSize = 8;
     }
-    console.log(tw % (pixelSize * 2));
+
+    // For efficiency, only half the width is calculated (and then copied, with a seam in the middle)
+    // Also, the heatField needs to be scaled up by pixelSize to be rendered.
+    // Therefore, if the half the width isn't exactly divisible by pixelSize, horizontal skew
+    // will occur.  This is bad.
     if (tw % (pixelSize * 2) != 0) {
         tw -= (tw % (pixelSize * 2));
     }
-    console.log(tw % pixelSize);
-    canvas.width = tw;     // equals window dimension
+    canvas.width = tw;
     canvas.height = window.innerHeight;
-    console.log(canvas.width);
-    var fps = 60;
+    
     var canvasWidth = Math.trunc(Math.trunc(canvas.width / pixelSize) / 2); 
     var canvasHeight = Math.trunc(canvas.height / pixelSize);
 
@@ -44,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    //var decayConstant = 0.001;
     var heatTransfer = 0.99;
     var fireMoveThreshold = 0.33;
     var lastTime = 0;
@@ -66,36 +70,19 @@ document.addEventListener("DOMContentLoaded", function() {
             totalFrames = 0;
         }
 
-        // Cool, generating smoke in the process
-        /*
-        for (let y = 0; y < canvasHeight; y++) {
-            let iy = canvasHeight - y;
-            let iy2 = iy << 2;
-            let decayAmount = iy2 * decayConstant;
-            let base_index = y * canvasWidth;
-            for (let x = 0; x < canvasWidth; x++) {
-                let index = base_index + x;
-                if (heatField[index] > 0) {
-                    heatField[index] -= decayAmount;
-                    if (heatField[index] <= 0) {
-                        heatField[index] = 0;
-                        // TODO - Generate Smoke
-                    }
-                }
-            }
-        }*/
-
-        // Add heat
+        // Add new heat
         let base_index = (canvasHeight - 1) * canvasWidth;
         for (let x = 0; x < canvasWidth; x++) {
+            // Intensity of new heat should range between 0.5 - 1
             heatField[base_index + x] = 1 * noise.simplex3(x / 100, now / 100, now * 100);
             if (heatField[base_index + x] < 0.5) {
                 heatField[base_index + x] = 0.5;
             }
         }
 
-        // Move heat
+        // Move heat, dissipating in the process and generate smoke
         for (let y = 1; y < canvasHeight; y++) {
+            // TODO - Generate Smoke
             let base_index = y * canvasWidth;
             for (let x = 0; x < canvasWidth; x++) {
                 let heat_amount = heatTransfer * heatField[base_index + x];
