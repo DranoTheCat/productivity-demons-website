@@ -1,8 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
+    window.onresize = function(){ location.reload(); }
+
     var canvas = document.getElementById('fire');
     var ctx = canvas.getContext('2d');
     var pixelSize = 4;
     tw = window.innerWidth;
+    if (tw > 1900) { // 4k?
+        pixelSize = 8;
+    }
     console.log(tw % (pixelSize * 2));
     if (tw % (pixelSize * 2) != 0) {
         tw -= (tw % (pixelSize * 2));
@@ -40,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     //var decayConstant = 0.001;
-    var heatTransfer = 0.985;
+    var heatTransfer = 0.99;
     var fireMoveThreshold = 0.33;
     var lastTime = 0;
     var totalFrames = 0;

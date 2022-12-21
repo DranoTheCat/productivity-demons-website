@@ -29,10 +29,6 @@
     float: left;
   }
 
-  #dougimg {
-    transform: rotate(7deg) translateY(-30px);
-  }
-
   .rightimg {
     float: right
   }
@@ -83,11 +79,6 @@
         padding: 3px;
     }
     #window {
-        width: 98vw;
+        width: 90vw;
     }
-
-    #dougimg {
-        transform: rotate(97deg) translateY(-30px);
-        scale: 50%;
-      }
 }
