@@ -151,6 +151,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 randomizeThreshold();
             }
         }
+
+        console.log(imageData.data);
         
         ctx.putImageData(imageData, 0, 0);
     };
