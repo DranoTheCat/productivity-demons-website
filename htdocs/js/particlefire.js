@@ -1,19 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
+    var mousex;
+    var mousey;
+
     window.onresize = function() { location.reload(); }
     window.onmousemove = function(event) {
         mousex = event.clientX;
         mousey = event.clientY;
-        let index = parseInt(mousey / pixelSize) * canvasWidth + parseInt(mousex / pixelSize);
-        let heat_amount = 0.3;
-        heatField[index] += heat_amount;
-        if (index > 2) {
-            heatField[index - 1] += heat_amount;
-            heatField[index - 2] += heat_amount;
-        }
-        if (index < canvasWidth * canvasHeight - 2) {
-            heatField[index + 1] += heat_amount;
-            heatField[index + 2] += heat_amount;
-        }
     }
 
     var fps = 60; // Strangely, doesn't look as good at 24fps despite matching the animations
@@ -94,6 +86,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 heatField[base_index + x] = 0.5;
             }
         }
+
+        // Add new heat at mouse
+        let index = parseInt(mousey / pixelSize) * canvasWidth + parseInt(mousex / pixelSize);
+        let heat_amount = 0.3;
+        heatField[index] += heat_amount;
+        if (index > 2) {
+            heatField[index - 1] += heat_amount;
+            heatField[index - 2] += heat_amount;
+        }
+        if (index < canvasWidth * canvasHeight - 2) {
+            heatField[index + 1] += heat_amount;
+            heatField[index + 2] += heat_amount;
+        }
+
 
         // Move heat, dissipating in the process and generate smoke
         for (let y = 1; y < canvasHeight; y++) {
