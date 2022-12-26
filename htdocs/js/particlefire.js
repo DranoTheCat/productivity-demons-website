@@ -19,17 +19,14 @@ document.addEventListener("DOMContentLoaded", function() {
         pixelSize = 8;
     }
 
-    // For efficiency, only half the width is calculated (and then copied, with a seam in the middle)
-    // Also, the heatField needs to be scaled up by pixelSize to be rendered.
-    // Therefore, if the half the width isn't exactly divisible by pixelSize, horizontal skew
-    // will occur.  This is bad.
-    if (tw % (pixelSize * 2) != 0) {
-        tw -= (tw % (pixelSize * 2));
+    // Make sure pixels are aligned
+    if (tw % (pixelSize) != 0) {
+        tw -= (tw % pixelSize);
     }
     canvas.width = tw;
     canvas.height = window.innerHeight;
     
-    var canvasWidth = Math.trunc(Math.trunc(canvas.width / pixelSize) / 2); 
+    var canvasWidth = Math.trunc(canvas.width / pixelSize); 
     var canvasHeight = Math.trunc(canvas.height / pixelSize);
 
     var imageData = new ImageData(canvas.width, canvas.height);
@@ -141,8 +138,8 @@ document.addEventListener("DOMContentLoaded", function() {
       
         // Render frame
         let ps2 = pixelSize * pixelSize;
-        let cwps2 = canvasWidth * ps2 * 2;
-        let chunk = canvasWidth * pixelSize * 4 * 2;
+        let cwps2 = canvasWidth * ps2;
+        let chunk = canvasWidth * pixelSize * 4;
         for (let y = 0; y < canvasHeight; y++) {
             let base_heat_index = y * canvasWidth;
             let base_data_index = y * cwps2 * 4;
@@ -190,15 +187,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     let inner_data_index = mid_data_index + y2 * chunk;
                     for (let x2 = 0; x2 < pixelSize; x2++) {
                         let data_index = inner_data_index + x2 * 4;
-                        let mirror_data_index = data_index + canvasWidth * pixelSize * 4;
                         data[data_index] = r;  
                         data[data_index + 1] = g;
                         data[data_index + 2] = b;
                         data[data_index + 3] = heat_amount;
-                        data[mirror_data_index] = r;  
-                        data[mirror_data_index + 1] = g;
-                        data[mirror_data_index + 2] = b;
-                        data[mirror_data_index + 3] = heat_amount;
                     }
                 }               
             }
