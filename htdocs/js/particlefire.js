@@ -1,11 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
     var mousex;
     var mousey;
+    var mouseFire = true;
 
     window.onresize = function() { location.reload(); }
     window.onmousemove = function(event) {
         mousex = event.clientX;
         mousey = event.clientY;
+    }
+    window.onmouseout = function(event) {
+        mouseFire = false;
+        console.log("mouseout");
+    }
+    window.onmouseover = function(event) {
+        mouseFire = true;
+        console.log("mousein");
     }
 
     var fps = 60; // Strangely, doesn't look as good at 24fps despite matching the animations
@@ -85,18 +94,19 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Add new heat at mouse
-        let index = parseInt(mousey / pixelSize) * canvasWidth + parseInt(mousex / pixelSize);
-        let heat_amount = 0.3;
-        heatField[index] += heat_amount;
-        if (index > 2) {
-            heatField[index - 1] += heat_amount;
-            heatField[index - 2] += heat_amount;
+        if (mouseFire) {
+            let index = parseInt(mousey / pixelSize) * canvasWidth + parseInt(mousex / pixelSize);
+            let heat_amount = 0.3;
+            heatField[index] += heat_amount;
+            if (index > 2) {
+                heatField[index - 1] += heat_amount;
+                heatField[index - 2] += heat_amount;
+            }
+            if (index < canvasWidth * canvasHeight - 2) {
+                heatField[index + 1] += heat_amount;
+                heatField[index + 2] += heat_amount;
+            }
         }
-        if (index < canvasWidth * canvasHeight - 2) {
-            heatField[index + 1] += heat_amount;
-            heatField[index + 2] += heat_amount;
-        }
-
 
         // Move heat, dissipating in the process and generate smoke
         for (let y = 1; y < canvasHeight; y++) {
