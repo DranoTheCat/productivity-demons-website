@@ -1,5 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
-    window.onresize = function(){ location.reload(); }
+    window.onresize = function() { location.reload(); }
+    window.onmousemove = function(event) {
+        mousex = event.clientX;
+        mousey = event.clientY;
+        let index = parseInt(mousey / pixelSize) * canvasWidth + parseInt(mousex / pixelSize);
+        let heat_amount = 0.3;
+        heatField[index] += heat_amount;
+        if (index > 2) {
+            heatField[index - 1] += heat_amount;
+            heatField[index - 2] += heat_amount;
+        }
+        if (index < canvasWidth * canvasHeight - 2) {
+            heatField[index + 1] += heat_amount;
+            heatField[index + 2] += heat_amount;
+        }
+    }
 
     var fps = 60; // Strangely, doesn't look as good at 24fps despite matching the animations
 
@@ -74,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let base_index = (canvasHeight - 1) * canvasWidth;
         for (let x = 0; x < canvasWidth; x++) {
             // Intensity of new heat should range between 0.5 - 1
-            heatField[base_index + x] = 1 * noise.simplex3(x / 100, now / 100, now * 100);
+            heatField[base_index + x] = noise.simplex3(x / 100, now / 100, now * 100);
             if (heatField[base_index + x] < 0.5) {
                 heatField[base_index + x] = 0.5;
             }
