@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var installationinstructions = document.getElementById("installationinstructions");
     var github = document.getElementById("github");
     var titleimg = document.getElementById("titleimg");
+    var titleimgm = document.getElementById("titleimg-m");
 
     titleimg.onmousedown = function(event) {
         if (event.button == 1) {
@@ -11,6 +12,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     titleimg.onmouseup = function(event) {
+        switch(event.button) {
+            case 0:// left
+                window.location = "/";
+                break;g
+            case 1: // middle
+                window.open("/", '_blank');
+                break;
+        }
+    }
+
+    titleimgm.onmousedown = function(event) {
+        if (event.button == 1) {
+            event.preventDefault();
+            return false;
+        }
+    }
+    titleimgm.onmouseup = function(event) {
         switch(event.button) {
             case 0:// left
                 window.location = "/";
