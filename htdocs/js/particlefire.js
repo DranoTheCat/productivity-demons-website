@@ -1,3 +1,6 @@
+/* 
+All content and applicable code is ©2022 DranoTheCat.
+*/
 document.addEventListener("DOMContentLoaded", function() {
     var mousex;
     var mousey;
@@ -203,7 +206,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 }               
             }
         }
-    
         ctx.putImageData(imageData, 0, 0);
     };
 

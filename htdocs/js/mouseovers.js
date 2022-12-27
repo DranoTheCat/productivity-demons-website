@@ -1,3 +1,6 @@
+/* 
+All content and applicable code is ©2022 DranoTheCat.
+*/
 document.addEventListener("DOMContentLoaded", function() {
     var demoninstructions = document.getElementById("demoninstructions");
     var installationinstructions = document.getElementById("installationinstructions");
