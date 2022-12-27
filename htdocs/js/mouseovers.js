@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", function() {
     titleimg.onmouseup = function(event) {
         switch(event.button) {
             case 0:// left
-                window.location = "/";
+                window.location = "/index.html";
                 break;g
             case 1: // middle
-                window.open("/", '_blank');
+                window.open("/index.html", '_blank');
                 break;
         }
     }
@@ -31,10 +31,10 @@ document.addEventListener("DOMContentLoaded", function() {
     titleimgm.onmouseup = function(event) {
         switch(event.button) {
             case 0:// left
-                window.location = "/";
+                window.location = "/index.html";
                 break;g
             case 1: // middle
-                window.open("/", '_blank');
+                window.open("/index.html", '_blank');
                 break;
         }
     }
