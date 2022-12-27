@@ -91,6 +91,11 @@
     -20px 20px 20px -20px #000;
   }
 
+  #shortbox {
+    width: 66%;
+    margin: auto;
+  }
+
   #title {
     font-size: 3em;
   }
