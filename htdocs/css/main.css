@@ -12,7 +12,10 @@
     background: rgb(0,0,0);
     /*background: linear-gradient(90deg, rgb(153, 10, 5) 0%, rgba(0,0,0,1) 23%, rgba(0, 0, 0, 1) 77%, rgba(153, 10, 5, 1) 100%); */
     color: #faeef8;
-    padding: 5px;
+  }
+
+  .padimg {
+    padding: 10px;
   }
 
   #section {
@@ -36,6 +39,45 @@
 
   #titleimg {
     min-width: 350px;
+    display: inline-block;
+  }
+
+  #titleimg:hover {
+    cursor: pointer;
+  }
+  #titleimg-m:hover {
+    cursor: pointer;
+  }
+  .subtitlescale:hover {
+    cursor: pointer;
+  }
+  .halfsubtitlescale:hover {
+    cursor: pointer;
+  }
+
+  #titleimg-m {
+    display: none;
+  }
+
+  #github {
+    min-width: 150px;
+  }
+
+  #demoninstructions {
+    min-width: 150px;
+  }
+
+  #installationinstructions {
+    min-width: 150px;
+  }
+
+  #github {
+    min-width: 150px;
+  }
+
+  #subtitlebox {
+    width: 50%;
+    margin: auto;
   }
 
   #window {
@@ -53,10 +95,25 @@
     font-size: 3em;
   }
 
-  .scale {
+  .titlescale {
     width: 50%;
     height: auto;
     margin: auto;
+  }
+
+  .subtitlescale {
+    width: 25%;
+    height: auto;
+    margin: auto;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .halfsubtitlescale {
+    width: 12%;
+    height: auto;
+    margin: auto;
+    padding: 5px;
   }
 
   .center {
@@ -69,19 +126,49 @@
     #window {
         width: 75vw;
     }
-    .scale {
+    .titlescale {
       width: 75%;
       height: auto;
       margin: auto;
     }
+    .subtitlescale {
+      width: 50%;
+      height: auto;
+      margin: auto;
+      padding: 5px;
+    }
+  
+    .halfsubtitlescale {
+      width: 25%;
+      height: auto;
+      margin: auto;
+      padding: 5px;
+    }
   }
 
   @media only screen and (max-width: 800px) {
-    #titleimg {
-      min-width: unset;
+    .titlescale {
+      width: 90%;
+      height: auto;
+      margin: auto;
     }
-    .scale {
+    .subtitlescale {
       width: 100%;
+      height: auto;
+      margin: auto;
+    }
+
+    #titleimg {
+      display: none;
+    }
+  
+    #titleimg-m {
+      min-width: 350px;
+      display: block;
+    }
+  
+    .halfsubtitlescale {
+      width: 50%;
       height: auto;
       margin: auto;
     }

@@ -10,11 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     window.onmouseout = function(event) {
         mouseFire = false;
-        console.log("mouseout");
     }
     window.onmouseover = function(event) {
         mouseFire = true;
-        console.log("mousein");
     }
 
     var fps = 60; // Strangely, doesn't look as good at 24fps despite matching the animations
