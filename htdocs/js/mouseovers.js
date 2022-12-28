@@ -38,9 +38,46 @@ document.addEventListener("DOMContentLoaded", function() {
                 break;g
             case 1: // middle
                 window.open("/index.html", '_blank');
+                window.focus();
                 break;
         }
     }
+
+    preview1.onmousedown = function(event) {
+        if (event.button == 1) {
+            event.preventDefault();
+            return false;
+        }
+    }
+    preview1.onmouseup = function(event) {
+        switch(event.button) {
+            case 0:// left
+                window.location = "/images/1-preview.png";
+                break;
+            case 1: // middle
+                window.open("/images/1-preview.png", '_blank');
+                window.focus();
+                break;
+        }
+    }
+    preview2.onmousedown = function(event) {
+        if (event.button == 1) {
+            event.preventDefault();
+            return false;
+        }
+    }
+    preview2.onmouseup = function(event) {
+        switch(event.button) {
+            case 0:// left
+                window.location = "/images/2-preview.png";
+                break;
+            case 1: // middle
+                window.open("/images/2-preview.png", '_blank');
+                window.focus();
+                break;
+        }
+    }
+    
 
     github.onmousedown = function(event) {
         if (event.button == 1) {
@@ -55,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 break;
             case 1: // middle
                 window.open("https://github.com/DranoTheCat/Productivity-Demons", '_blank');
+                window.focus();
                 break;
         }
     }
@@ -84,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 break;
             case 1: // middle
                 window.open("/installationinstructions.html", '_blank');
+                window.focus();
                 break;
         }
     }
@@ -107,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 break;
             case 1: // middle
                 window.open("/demoninstructions.html", '_blank');
+                window.focus();
                 break;
         }
     }
