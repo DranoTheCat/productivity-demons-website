@@ -17,6 +17,10 @@
     color: #faeef8;
   }
 
+  .blissbox {
+    background: linear-gradient(0deg, rgba(255,0,255,1) 0%, rgba(0,255,255,1) 66%); 
+  }
+
   .padimg {
     padding: 10px;
   }
