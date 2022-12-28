@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var github = document.getElementById("github");
     var titleimg = document.getElementById("titleimg");
     var titleimgm = document.getElementById("titleimg-m");
+    var preview2 = document.getElementById("preview2");
+    var preview1 = document.getElementById("preview1");
 
     titleimg.onmousedown = function(event) {
         if (event.button == 1) {
