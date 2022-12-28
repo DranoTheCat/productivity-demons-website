@@ -21,6 +21,10 @@
     background: linear-gradient(0deg, rgba(255,0,255,1) 0%, rgba(0,255,255,1) 66%); 
   }
 
+  .hellbox {
+    background: linear-gradient(0deg, rgba(255, 238, 0, 1) 0%, rgba(255, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 66%); 
+  }
+
   .padimg {
     padding: 10px;
   }
