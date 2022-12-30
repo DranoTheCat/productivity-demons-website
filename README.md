@@ -8,3 +8,4 @@ The code for the Stream Deck plugin itself is at:  https://github.com/DranoTheCa
 Before downloading the source code, please read the [EULA](EULA.txt).
 
 Copyright ©2022 DranoTheCat
+
