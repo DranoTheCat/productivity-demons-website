@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", function() {
     preview1.onmouseup = function(event) {
         switch(event.button) {
             case 0:// left
-                window.location = "https://static.dranothecat.com/productivitydemons.dranothecat.com/https://static.dranothecat.com/productivitydemons.dranothecat.com/images/1-preview.png";
+                window.location = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/1-preview.png";
                 break;
             case 1: // middle
-                window.open("https://static.dranothecat.com/productivitydemons.dranothecat.com/https://static.dranothecat.com/productivitydemons.dranothecat.com/images/1-preview.png", '_blank');
+                window.open("https://static.dranothecat.com/productivitydemons.dranothecat.com/images/1-preview.png", '_blank');
                 window.focus();
                 break;
         }
@@ -68,10 +68,10 @@ document.addEventListener("DOMContentLoaded", function() {
     preview2.onmouseup = function(event) {
         switch(event.button) {
             case 0:// left
-                window.location = "https://static.dranothecat.com/productivitydemons.dranothecat.com/https://static.dranothecat.com/productivitydemons.dranothecat.com/images/2-preview.png";
+                window.location = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/2-preview.png";
                 break;
             case 1: // middle
-                window.open("https://static.dranothecat.com/productivitydemons.dranothecat.com/https://static.dranothecat.com/productivitydemons.dranothecat.com/images/2-preview.png", '_blank');
+                window.open("https://static.dranothecat.com/productivitydemons.dranothecat.com/images/2-preview.png", '_blank');
                 window.focus();
                 break;
         }
@@ -96,17 +96,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     github.onmouseout = function(event) {
-        github.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/github.png";
+        github.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/github.png";
     }
     github.onmouseover = function(event) {
-        github.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/github-mover.png";
+        github.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/github-mover.png";
     }
     
     installationinstructions.onmouseout = function(event) {
-        installationinstructions.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/installationinstructions.png";
+        installationinstructions.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/installationinstructions.png";
     }
     installationinstructions.onmouseover = function(event) {
-        installationinstructions.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/installationinstructions-mover.png";
+        installationinstructions.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/installationinstructions-mover.png";
     }
     installationinstructions.onmousedown = function(event) {
         if (event.button == 1) {
@@ -127,10 +127,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     demoninstructions.onmouseout = function(event) {
-        demoninstructions.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/demoninstructions.png";
+        demoninstructions.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/demoninstructions.png";
     }
     demoninstructions.onmouseover = function(event) {
-        demoninstructions.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/demoninstructions-mover.png";
+        demoninstructions.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/demoninstructions-mover.png";
     }
     demoninstructions.onmousedown = function(event) {
         if (event.button == 1) {
