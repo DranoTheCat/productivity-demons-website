@@ -96,17 +96,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     github.onmouseout = function(event) {
-        github.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/github.png";
+        github.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/github.png";
     }
     github.onmouseover = function(event) {
-        github.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/github-mover.png";
+        github.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/github-mover.png";
     }
     
     installationinstructions.onmouseout = function(event) {
-        installationinstructions.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/installationinstructions.png";
+        installationinstructions.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/installationinstructions.png";
     }
     installationinstructions.onmouseover = function(event) {
-        installationinstructions.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/installationinstructions-mover.png";
+        installationinstructions.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/installationinstructions-mover.png";
     }
     installationinstructions.onmousedown = function(event) {
         if (event.button == 1) {
@@ -127,10 +127,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     demoninstructions.onmouseout = function(event) {
-        demoninstructions.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/demoninstructions.png";
+        demoninstructions.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/demoninstructions.png";
     }
     demoninstructions.onmouseover = function(event) {
-        demoninstructions.src = https://static.dranothecat.com/productivitydemons.dranothecat.com/images/demoninstructions-mover.png";
+        demoninstructions.src = "https://static.dranothecat.com/productivitydemons.dranothecat.com/images/demoninstructions-mover.png";
     }
     demoninstructions.onmousedown = function(event) {
         if (event.button == 1) {
