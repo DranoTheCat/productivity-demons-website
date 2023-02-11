@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 heatField[index + 2] += heat_amount;
             }
         }
+        
 
         // Move heat, dissipating in the process and generate smoke
         for (let y = 1; y < canvasHeight; y++) {
