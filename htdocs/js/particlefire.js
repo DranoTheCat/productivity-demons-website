@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (tw > 1900) { // Probably have a 4k display
         pixelSize = 8;
     }
+    pixelSize = 1;
 
     // Make sure pixels are aligned
     if (tw % (pixelSize) != 0) {
