@@ -105,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 heatField[index + 2] += heat_amount;
             }
         }
-        
 
         // Move heat, dissipating in the process and generate smoke
         for (let y = 1; y < canvasHeight; y++) {
@@ -155,35 +154,35 @@ document.addEventListener("DOMContentLoaded", function() {
             for (let x = 0; x < canvasWidth; x++) {
                 let heat_index = base_heat_index + x;
                 let heat_amount = Math.round(255 * heatField[heat_index]);
-                let mid_data_index = base_data_index + x * pixelSize * 1;
+                let mid_data_index = base_data_index + x * pixelSize * 4;
 
-                let r = 0;
-                let g = 64;
+                let r = 64;
+                let g = 0;
                 let b = 0;
                 
                 if (heat_amount > 172) {
-                    r = 200;
+                    r = 256;
                     g = 256;
-                    b = 256;
+                    b = 200;
                 } else if (heat_amount > 128) {
-                    r = 128;
-                    g = 256;
+                    r = 256;
+                    g = 128;
                     b = 32;
                 } else if (heat_amount > 92) {
-                    r = 92;
-                    g = 256;
+                    r = 256;
+                    g = 92;
                     b = 24;
                 } else if (heat_amount > 64) {
-                    r = 64;
-                    g = 256;
+                    r = 256;
+                    g = 64;
                     b = 16;
                 } else if (heat_amount > 32) {
-                    r = 16;
-                    g = 128;
+                    r = 128;
+                    g = 16;
                     b = 4;
                 } else if (heat_amount > 16) {
-                    r = 8;
-                    g = 128;
+                    r = 128;
+                    g = 8;
                     b = 0;
                 }
 
