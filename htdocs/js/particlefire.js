@@ -148,14 +148,14 @@ document.addEventListener("DOMContentLoaded", function() {
         // Render frame
         let ps2 = pixelSize * pixelSize;
         let cwps2 = canvasWidth * ps2;
-        let chunk = canvasWidth * pixelSize * 4;
+        let chunk = canvasWidth * pixelSize * 16;
         for (let y = 0; y < canvasHeight; y++) {
             let base_heat_index = y * canvasWidth;
-            let base_data_index = y * cwps2 * 4;
+            let base_data_index = y * cwps2 * 16;
             for (let x = 0; x < canvasWidth; x++) {
                 let heat_index = base_heat_index + x;
                 let heat_amount = Math.round(255 * heatField[heat_index]);
-                let mid_data_index = base_data_index + x * pixelSize * 4;
+                let mid_data_index = base_data_index + x * pixelSize * 16;
 
                 let r = 0;
                 let g = 64;
